@@ -16,7 +16,7 @@ load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencie
 
 crate_universe_dependencies()
 
-load("@rules_rust//crate_universe:defs.bzl", "crates_repository")
+load("@rules_rust//crate_universe:defs.bzl", "crates_repository", "crate")
 
 crates_repository(
     name = "crate_index",
@@ -25,6 +25,13 @@ crates_repository(
     manifests = [
       "//rust/gui:Cargo.toml",
     ],
+    annotations = {
+            "sdl2-sys": [crate.annotation(
+                build_script_env = {
+                   "PATH": "/bin:/usr/bin:/usr/local/bin",
+                },
+            )],
+        },
 )
 
 load("@crate_index//:defs.bzl", "crate_repositories")
