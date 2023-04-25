@@ -25,6 +25,7 @@ crates_repository(
     isolated = False,
     manifests = [
       "//rust/gui:Cargo.toml",
+      "//rust/dummy:Cargo.toml",
     ],
     annotations = {
             "sdl2-sys": [crate.annotation(
