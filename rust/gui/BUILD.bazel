@@ -5,6 +5,9 @@ load("@crate_index//:defs.bzl", "all_crate_deps")
 rust_binary(
     name = "gui",
     srcs = glob(["src/**/*.rs"]),
+    crate_features = [
+        "sld2",
+    ],
     deps = all_crate_deps() + [
         "@crate_index//:astc-decode",
     ],
